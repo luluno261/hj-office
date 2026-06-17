@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Inter:wght@200;300;400;500;600&family=PT+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .radial-cream-white {
+    background: radial-gradient(circle, #F4EDE7 0%, #FFFFFF 50%);
+  }
+}
+
+@layer components {
+  .prose-blog h2 {
+    @apply mb-4 mt-8 text-2xl font-semibold text-teal-900;
+  }
+  .prose-blog h3 {
+    @apply mb-3 mt-6 text-xl font-semibold text-teal-900;
+  }
+  .prose-blog p {
+    @apply mb-4 text-[16px] leading-relaxed text-body;
+  }
+  .prose-blog ul {
+    @apply mb-4 list-disc space-y-2 pl-6 text-body;
+  }
+  .prose-blog ol {
+    @apply mb-4 list-decimal space-y-2 pl-6 text-body;
+  }
+  .prose-blog a {
+    @apply text-gold underline hover:text-gold/80;
+  }
+  .prose-blog blockquote {
+    @apply my-6 border-l-4 border-gold pl-4 italic text-dark;
+  }
+}
