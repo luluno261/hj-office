@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Facebook, Linkedin } from 'lucide-react';
 import { siteImageAlt, siteImages } from '@/lib/site-images';
 
 const siteLinks = [
@@ -18,6 +18,7 @@ const expertiseLinks = [
   { label: 'Expertise Comptable', href: '/#services' },
   { label: 'Pôle Entreprise', href: '/#services' },
   { label: 'Pôle Formations', href: '/#formations' },
+  { label: 'Cabinet de Consultance', href: '/#services' },
 ];
 
 const resourceLinks = [
@@ -101,14 +102,11 @@ export function Footer() {
           </p>
 
           <div className="flex gap-4 text-dark">
-            <a href="#" className="hover:text-gold" aria-label="Twitter">
-              <Twitter className="h-5 w-5" />
+            <a href="#" className="hover:text-gold" aria-label="Facebook">
+              <Facebook className="h-5 w-5" />
             </a>
             <a href="#" className="hover:text-gold" aria-label="LinkedIn">
               <Linkedin className="h-5 w-5" />
-            </a>
-            <a href="#" className="hover:text-gold" aria-label="Instagram">
-              <Instagram className="h-5 w-5" />
             </a>
           </div>
 

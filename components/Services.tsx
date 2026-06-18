@@ -8,6 +8,7 @@ import {
   BarChart3,
   Briefcase,
   GraduationCap,
+  Globe2,
   ArrowRight,
   ChevronLeft,
   ChevronRight,
@@ -19,6 +20,7 @@ interface ServiceItem {
   title: string;
   icon: LucideIcon;
   description: string;
+  shortDescription?: string;
   id?: string;
 }
 
@@ -59,6 +61,15 @@ const services: ServiceItem[] = [
       'Programmes pour professionnels et entreprises : fiscalité, droit douanier, comptabilité, management, gouvernance, conformité et anglais professionnel, dispensés par des praticiens expérimentés.',
     id: 'formations',
   },
+  {
+    num: '06',
+    title: 'Cabinet de Consultance',
+    icon: Globe2,
+    description:
+      'Services de consultance spécialisés couvrant la gouvernance, la lutte contre la corruption, les réformes institutionnelles, la gestion de projets, l\'évaluation de politiques publiques et le développement durable. Notre approche analytique et participative aide les organisations internationales à atteindre des résultats mesurables et durables. Nous collaborons avec des partenaires nationaux et internationaux pour offrir des solutions innovantes adaptées aux contextes locaux complexes.',
+    shortDescription:
+      'Services de consultance spécialisés couvrant la gouvernance, la lutte contre la corruption, les réformes institutionnelles, la gestion de projets, l\'évaluation de politiques publiques et le développement durable.',
+  },
 ];
 
 const slideVariants = {
@@ -92,6 +103,8 @@ export function Services() {
 
   const activeService = services[activeIndex];
   const ActiveIcon = activeService.icon;
+  const displayDescription = (service: ServiceItem) =>
+    service.shortDescription ?? service.description;
 
   return (
     <section id="services" className="bg-teal-900 px-4 py-16 font-sans lg:py-28">
@@ -100,7 +113,7 @@ export function Services() {
           <div className="inline-flex items-center gap-[5px] rounded-[100px] border border-gold px-5 py-1.5">
             <div className="h-2.5 w-2.5 rounded-[5px] bg-gold" />
             <span className="font-sans text-base font-normal leading-5 text-gold lg:text-lg">
-              Nos 5 Pôles d'expertise
+              Nos 6 Pôles d'expertise
             </span>
           </div>
           <div className="pt-4 lg:pt-7">
@@ -110,15 +123,15 @@ export function Services() {
               au service de vos projets
             </h2>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-base font-light leading-relaxed text-white/70 lg:text-lg">
-              Cinq pôles d&apos;expertise réunis sous un même toit pour un
-              accompagnement juridique, fiscal et entrepreneurial global.
+              Six pôles d&apos;expertise réunis sous un même toit pour un
+              accompagnement juridique, fiscal, entrepreneurial et institutionnel global.
             </p>
           </div>
         </div>
 
         {/* Mobile: Carousel */}
         <div className="relative w-full lg:hidden">
-          <div className="relative h-[500px] overflow-hidden">
+          <div className="relative h-[400px] overflow-hidden">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={activeIndex}
@@ -152,8 +165,8 @@ export function Services() {
                     <h3 className="font-sans text-2xl font-semibold leading-tight text-white">
                       {activeService.title}
                     </h3>
-                    <p className="font-sans text-base font-light leading-relaxed text-white/70">
-                      {activeService.description}
+                    <p className="line-clamp-5 font-sans text-base font-light leading-relaxed text-white/70">
+                      {displayDescription(activeService)}
                     </p>
                   </div>
 
@@ -201,7 +214,7 @@ export function Services() {
         </div>
 
         {/* Desktop: Accordion */}
-        <div className="hidden h-[600px] items-stretch justify-center gap-4 self-stretch lg:flex">
+        <div className="hidden h-[480px] items-stretch justify-center gap-4 self-stretch lg:flex">
           {services.map((service, index) => {
             const isActive = activeIndex === index;
             const Icon = service.icon;
@@ -219,7 +232,7 @@ export function Services() {
                 }`}>
                 {isActive && (
                   <div className="pointer-events-none absolute -bottom-20 -right-20 opacity-10">
-                    <Icon size={400} color="white" />
+                    <Icon size={280} color="white" />
                   </div>
                 )}
 
@@ -231,7 +244,7 @@ export function Services() {
                     {service.num}
                   </span>
                   <div className="flex h-full items-center justify-center">
-                    <span className="rotate-180 whitespace-nowrap font-sans text-xl font-medium uppercase tracking-wide text-teal-900 [writing-mode:vertical-rl]">
+                    <span className="rotate-180 whitespace-nowrap font-sans text-lg font-medium uppercase tracking-wide text-teal-900 [writing-mode:vertical-rl]">
                       {service.title}
                     </span>
                   </div>
@@ -241,11 +254,11 @@ export function Services() {
                 </div>
 
                 <div
-                  className={`absolute inset-0 flex flex-col justify-between p-10 transition-opacity delay-100 duration-500 ${
+                  className={`absolute inset-0 flex flex-col justify-between p-8 transition-opacity delay-100 duration-500 ${
                     isActive ? 'opacity-100' : 'pointer-events-none opacity-0'
                   }`}>
                   <div className="flex items-start justify-between">
-                    <span className="font-sans text-5xl font-bold text-gold">
+                    <span className="font-sans text-4xl font-bold text-gold">
                       {service.num}
                     </span>
                     <div className="rounded-full bg-white/10 p-4 text-gold backdrop-blur-sm">
@@ -254,11 +267,11 @@ export function Services() {
                   </div>
 
                   <div className="flex max-w-[80%] flex-col gap-6">
-                    <h3 className="font-sans text-4xl font-semibold leading-tight text-white lg:text-5xl">
+                    <h3 className="font-sans text-3xl font-semibold leading-tight text-white lg:text-4xl">
                       {service.title}
                     </h3>
-                    <p className="font-sans text-lg font-light leading-relaxed text-white/70">
-                      {service.description}
+                    <p className="line-clamp-5 font-sans text-lg font-light leading-relaxed text-white/70">
+                      {displayDescription(service)}
                     </p>
                   </div>
 

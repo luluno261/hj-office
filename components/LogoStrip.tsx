@@ -7,6 +7,7 @@ const poles = [
   'Expertise Comptable',
   'Pôle Entreprise',
   'Pôle Formations',
+  'Cabinet de Consultance',
 ];
 
 export function LogoStrip() {

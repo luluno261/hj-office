@@ -39,7 +39,7 @@ export function Team() {
           </div>
           <div className="max-w-[630px] space-y-6">
             <p className="text-[16px] leading-relaxed text-body">
-              Des professionnels expérimentés au sein de nos cinq pôles
+              Des professionnels expérimentés au sein de nos six pôles
               d&apos;expertise collaborent au quotidien pour vous offrir un
               accompagnement global, sécurisé et adapté à vos ambitions.
             </p>

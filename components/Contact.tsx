@@ -25,7 +25,7 @@ export function Contact() {
               </h2>
               <p className="text-[16px] leading-relaxed text-body">
                 Parlez-nous de votre projet — juridique, fiscal, comptable ou
-                entrepreneurial. Nos cinq pôles d&apos;expertise coordonnent une
+                entrepreneurial. Nos six pôles d&apos;expertise coordonnent une
                 réponse adaptée à vos besoins.
               </p>
             </div>

@@ -92,14 +92,14 @@ export function WhyChooseUs() {
                   ))}
                 </div>
                 <p className="max-w-[200px] text-[18px] font-semibold leading-tight text-white">
-                  5 pôles d&apos;expertise réunis sous un même toit
+                  6 pôles d&apos;expertise réunis sous un même toit
                 </p>
               </div>
 
               <div className="flex gap-6">
                 <div className="flex flex-1 flex-col items-center rounded-[10px] bg-white p-6 text-center">
                   <div className="mb-4 flex h-[100px] w-[100px] items-center justify-center rounded-full border-8 border-cream">
-                    <span className="text-[36px] font-bold text-gold">5</span>
+                    <span className="text-[36px] font-bold text-gold">6</span>
                   </div>
                   <h4 className="text-[14px] font-bold uppercase text-teal-900">
                     Pôles d&apos;expertise

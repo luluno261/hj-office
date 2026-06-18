@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Facebook, Linkedin } from 'lucide-react';
 import { siteImageAlt, siteImages } from '@/lib/site-images';
 
 const slides = [
@@ -29,18 +29,17 @@ const slides = [
     title: 'Un cadre professionnel moderne',
     description:
       'Sept bureaux équipés, une salle de conférence de 25 places, une salle de réunion connectée, un parking privé sécurisé et un emplacement stratégique facilement accessible.',
-    image: siteImages.buildingExteriorDusk,
-    imageAlt: siteImageAlt.buildingExteriorDusk,
+    image: siteImages.heroModernFrame,
+    imageAlt: siteImageAlt.heroModernFrame,
   },
 ];
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Facebook, href: '#', label: 'Facebook' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
 ];
 
-const AUTOPLAY_MS = 1200;
+const AUTOPLAY_MS = 3000;
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -75,7 +74,7 @@ export function Hero() {
               opacity: idx === currentSlide ? 1 : 0,
               scale: idx === currentSlide ? 1 : 1.06,
             }}
-            transition={{ duration: 1.2, ease: 'easeInOut' }}>
+            transition={{ duration: 1.5, ease: 'easeInOut' }}>
             <Image
               src={slide.image}
               alt={slide.imageAlt}

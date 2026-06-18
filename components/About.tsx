@@ -111,7 +111,7 @@ export function About() {
                   <motion.span
                     variants={digitVariants}
                     className="select-none font-sans text-8xl font-bold leading-none text-teal-900 lg:text-[180px]">
-                    5
+                    6
                   </motion.span>
                   <motion.span
                     variants={digitVariants}

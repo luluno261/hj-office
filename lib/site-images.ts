@@ -7,6 +7,7 @@ export const siteImages = {
   officeInterior: '/Image4.jpg',
   buildingSide: '/Image5.jpg',
   buildingExteriorDay: '/Image6.jpg',
+  heroModernFrame: '/Image1.jpg',
 } as const;
 
 export const siteImageAlt: Record<keyof typeof siteImages, string> = {
@@ -18,4 +19,5 @@ export const siteImageAlt: Record<keyof typeof siteImages, string> = {
   officeInterior: 'Bureau moderne équipé chez HJ Offices',
   buildingSide: 'Allée latérale du bâtiment HJ Offices',
   buildingExteriorDay: 'Façade du bâtiment HJ Offices en journée',
+  heroModernFrame: 'Façade moderne du bâtiment HJ Offices au crépuscule',
 };

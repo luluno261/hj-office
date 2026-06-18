@@ -104,8 +104,8 @@ export function Facilities() {
               custom={0.1}>
               <div className="relative col-span-2 h-[220px] overflow-hidden rounded-[24px] shadow-lg lg:h-[280px]">
                 <Image
-                  src={siteImages.buildingExteriorDay}
-                  alt={siteImageAlt.buildingExteriorDay}
+                  src={siteImages.heroModernFrame}
+                  alt={siteImageAlt.heroModernFrame}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
