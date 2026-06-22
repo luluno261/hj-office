@@ -10,6 +10,7 @@
     "seed:posts": "node --env-file=.env.local scripts/seed-posts.mjs",
     "seed:site": "node --env-file=.env.local scripts/seed-site-content.mjs",
     "fix:amenity-keys": "node --env-file=.env.local scripts/fix-amenity-keys.mjs",
+    "fix:post-keys": "node --env-file=.env.local scripts/fix-post-body-keys.mjs",
     "studio:dev": "npm run dev --prefix studio-hjoffice",
     "studio:deploy": "npm run deploy --prefix studio-hjoffice",
     "studio:schema:deploy": "npm run schema:deploy --prefix studio-hjoffice"

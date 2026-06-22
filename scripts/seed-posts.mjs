@@ -7,6 +7,7 @@
  */
 
 import { createClient } from '@sanity/client';
+import { portableTextBlock } from './sanity-keys.mjs';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -41,36 +42,15 @@ const posts = [
     category: 'droit-des-affaires',
     publishedAt: '2024-12-01T10:00:00.000Z',
     body: [
-      {
-        _type: 'block',
-        style: 'normal',
-        children: [
-          {
-            _type: 'span',
-            text: 'La création d’une société est une étape décisive. Pourtant, de nombreux entrepreneurs commettent des erreurs juridiques évitables qui peuvent avoir des conséquences durables sur la gouvernance, la fiscalité ou la responsabilité des associés.',
-          },
-        ],
-      },
-      {
-        _type: 'block',
-        style: 'h2',
-        children: [
-          {
-            _type: 'span',
-            text: '1. Choisir une forme juridique inadaptée',
-          },
-        ],
-      },
-      {
-        _type: 'block',
-        style: 'normal',
-        children: [
-          {
-            _type: 'span',
-            text: 'SARL, SAS, SA… chaque statut a ses avantages et contraintes. Un mauvais choix initial peut compliquer une levée de fonds ou une transmission ultérieure.',
-          },
-        ],
-      },
+      portableTextBlock(
+        'normal',
+        'La création d’une société est une étape décisive. Pourtant, de nombreux entrepreneurs commettent des erreurs juridiques évitables qui peuvent avoir des conséquences durables sur la gouvernance, la fiscalité ou la responsabilité des associés.'
+      ),
+      portableTextBlock('h2', '1. Choisir une forme juridique inadaptée'),
+      portableTextBlock(
+        'normal',
+        'SARL, SAS, SA… chaque statut a ses avantages et contraintes. Un mauvais choix initial peut compliquer une levée de fonds ou une transmission ultérieure.'
+      ),
     ],
   },
   {
@@ -86,16 +66,10 @@ const posts = [
     category: 'droit-fiscal',
     publishedAt: '2024-12-05T10:00:00.000Z',
     body: [
-      {
-        _type: 'block',
-        style: 'normal',
-        children: [
-          {
-            _type: 'span',
-            text: 'La fin d’exercice est le moment idéal pour revoir votre stratégie fiscale. Amortissements, provisions, rémunération du dirigeant : chaque décision doit être anticipée.',
-          },
-        ],
-      },
+      portableTextBlock(
+        'normal',
+        'La fin d’exercice est le moment idéal pour revoir votre stratégie fiscale. Amortissements, provisions, rémunération du dirigeant : chaque décision doit être anticipée.'
+      ),
     ],
   },
   {
@@ -111,16 +85,10 @@ const posts = [
     category: 'transmission',
     publishedAt: '2024-12-10T10:00:00.000Z',
     body: [
-      {
-        _type: 'block',
-        style: 'normal',
-        children: [
-          {
-            _type: 'span',
-            text: 'La transmission d’entreprise est un processus complexe qui touche à la fois au droit des sociétés, à la fiscalité et au droit de la famille. Une anticipation de plusieurs années est souvent nécessaire.',
-          },
-        ],
-      },
+      portableTextBlock(
+        'normal',
+        'La transmission d’entreprise est un processus complexe qui touche à la fois au droit des sociétés, à la fiscalité et au droit de la famille. Une anticipation de plusieurs années est souvent nécessaire.'
+      ),
     ],
   },
 ];

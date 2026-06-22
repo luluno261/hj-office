@@ -7,7 +7,7 @@
  */
 
 import { createClient } from '@sanity/client';
-import { randomUUID } from 'node:crypto';
+import { keyed } from './sanity-keys.mjs';
 import { createReadStream } from 'node:fs';
 import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,10 +33,6 @@ const client = createClient({
 
 const root = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const publicDir = join(root, 'public');
-
-function keyed(item) {
-  return { _key: randomUUID().replace(/-/g, '').slice(0, 12), ...item };
-}
 
 async function uploadImage(filename, alt) {
   const filepath = join(publicDir, filename);

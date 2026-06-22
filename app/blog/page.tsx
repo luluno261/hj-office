@@ -7,7 +7,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { studioUrl } from '@/lib/studio-url';
 import { getPosts, getSiteSettingsResolved } from '@/sanity/lib/queries';
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export const metadata: Metadata = {
   title: 'Blog & actualités | HJ Offices Consortium',

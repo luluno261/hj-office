@@ -9,7 +9,7 @@ import { Services } from '@/components/Services';
 import { Team } from '@/components/Team';
 import { getHomePageContent, getLatestPosts } from '@/sanity/lib/queries';
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function HomePage() {
   const [content, latestPosts] = await Promise.all([

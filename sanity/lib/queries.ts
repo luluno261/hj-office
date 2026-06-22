@@ -51,7 +51,7 @@ const postFields = `{
   body
 }`;
 
-const siteSettingsQuery = `*[_type == "siteSettings"][0]{
+const siteSettingsQuery = `*[_type == "siteSettings" && _id == "siteSettings"][0]{
   siteName,
   logo,
   email,
@@ -101,7 +101,7 @@ const teamQuery = `*[_type == "teamMember"] | order(order asc) {
   order
 }`;
 
-const aboutPageQuery = `*[_type == "aboutPage"][0]{
+const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0]{
   eyebrow,
   headline,
   polesCount,
@@ -116,7 +116,7 @@ const aboutPageQuery = `*[_type == "aboutPage"][0]{
   ctaLabel
 }`;
 
-const facilitiesPageQuery = `*[_type == "facilitiesPage"][0]{
+const facilitiesPageQuery = `*[_type == "facilitiesPage" && _id == "facilitiesPage"][0]{
   eyebrow,
   title,
   intro,
@@ -126,7 +126,7 @@ const facilitiesPageQuery = `*[_type == "facilitiesPage"][0]{
   amenities
 }`;
 
-const contactPageQuery = `*[_type == "contactPage"][0]{
+const contactPageQuery = `*[_type == "contactPage" && _id == "contactPage"][0]{
   eyebrow,
   title,
   intro,

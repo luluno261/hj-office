@@ -12,7 +12,7 @@ import { formatCategoryLabel, formatPostDate } from '@/lib/format';
 import { getPostImageUrl } from '@/sanity/lib/image';
 import { getPostBySlug, getPostSlugs, getSiteSettingsResolved } from '@/sanity/lib/queries';
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
