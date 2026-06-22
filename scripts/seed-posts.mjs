@@ -136,7 +136,7 @@ async function seed() {
   await transaction.commit();
   console.log(`Seeded ${posts.length} posts successfully.`);
   console.log(
-    'Add images via Sanity Studio at /studio for each article.'
+    'Add images via Sanity Studio (http://localhost:3333) for each article.'
   );
 }
 

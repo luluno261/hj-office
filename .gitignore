@@ -7,13 +7,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & build
 node_modules
 dist
 dist-ssr
 .next
 out
-*.local
-.env.local
+.pnpm-store
+tsconfig.tsbuildinfo
+
+# Environment (secrets)
+.env
+.env.*
+!.env.local.example
+
+# Sanity Studio build artifacts
+studio-hjoffice/dist
+studio-hjoffice/.sanity
+
+# Vercel
+.vercel
 
 # Editor directories and files
 .vscode/*
@@ -25,3 +38,13 @@ out
 *.njsproj
 *.sln
 *.sw?
+
+# Cursor / agents / IA (ne pas versionner)
+.agents/
+.cursor/
+skills-lock.json
+**/agent-transcripts/
+*.plan.md
+
+# Fichiers temporaires Cursor (captures, assets locaux)
+assets/

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { siteImageAlt, siteImages } from '@/lib/site-images';
+import type { ResolvedImage } from '@/lib/resolve-image';
 import { Button } from './ui/Button';
 
 const navLinks = [
@@ -44,7 +44,13 @@ function NavLink({
   );
 }
 
-export function Header() {
+export function Header({
+  logo,
+  siteName = 'HJ Offices',
+}: {
+  logo: ResolvedImage;
+  siteName?: string;
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -77,8 +83,8 @@ export function Header() {
           className="flex shrink-0 items-center gap-2"
           onClick={closeMenu}>
           <Image
-            src={siteImages.logo}
-            alt={siteImageAlt.logo}
+            src={logo.src}
+            alt={logo.alt}
             width={48}
             height={48}
             className="h-9 w-auto object-contain sm:h-11 lg:h-12"
@@ -150,14 +156,14 @@ export function Header() {
                   className="flex items-center gap-2"
                   onClick={closeMenu}>
                   <Image
-                    src={siteImages.logo}
-                    alt={siteImageAlt.logo}
+                    src={logo.src}
+                    alt={logo.alt}
                     width={40}
                     height={40}
                     className="h-10 w-auto object-contain"
                   />
                   <span className="font-logo text-xl font-bold text-gold">
-                    HJ Offices
+                    {siteName}
                   </span>
                 </Link>
                 <button

@@ -7,24 +7,46 @@ import { Hero } from '@/components/Hero';
 import { Resources } from '@/components/Resources';
 import { Services } from '@/components/Services';
 import { Team } from '@/components/Team';
-import { getLatestPosts } from '@/sanity/lib/queries';
+import { getHomePageContent, getLatestPosts } from '@/sanity/lib/queries';
+
+export const revalidate = 60;
 
 export default async function HomePage() {
-  const latestPosts = await getLatestPosts(3);
+  const [content, latestPosts] = await Promise.all([
+    getHomePageContent(),
+    getLatestPosts(3),
+  ]);
+
+  const { siteSettings } = content;
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header />
+      <Header logo={siteSettings.logo} siteName={siteSettings.siteName} />
       <main>
-        <Hero />
-        <Services />
-        <About />
-        <Facilities />
-        <Team />
-        <Contact />
+        <Hero
+          slides={content.heroSlides}
+          heroTagline={siteSettings.heroTagline}
+          facebookUrl={siteSettings.facebookUrl}
+          linkedinUrl={siteSettings.linkedinUrl}
+        />
+        <Services
+          services={content.services}
+          badge={siteSettings.servicesBadge}
+          title={siteSettings.servicesTitle}
+          subtitle={siteSettings.servicesSubtitle}
+        />
+        <About about={content.aboutPage} />
+        <Facilities facilities={content.facilitiesPage} />
+        <Team
+          members={content.teamMembers}
+          eyebrow={siteSettings.teamEyebrow}
+          title={siteSettings.teamTitle}
+          intro={siteSettings.teamIntro}
+        />
+        <Contact contact={content.contactPage} settings={siteSettings} />
         <Resources posts={latestPosts} />
       </main>
-      <Footer />
+      <Footer settings={siteSettings} services={content.services} />
     </div>
   );
 }

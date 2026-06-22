@@ -10,7 +10,7 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { formatCategoryLabel, formatPostDate } from '@/lib/format';
 import { getPostImageUrl } from '@/sanity/lib/image';
-import { getPostBySlug, getPostSlugs } from '@/sanity/lib/queries';
+import { getPostBySlug, getPostSlugs, getSiteSettingsResolved } from '@/sanity/lib/queries';
 
 export const revalidate = 60;
 
@@ -50,7 +50,10 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const [post, { settings, services }] = await Promise.all([
+    getPostBySlug(slug),
+    getSiteSettingsResolved(),
+  ]);
 
   if (!post) {
     notFound();
@@ -61,7 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header />
+      <Header logo={settings.logo} siteName={settings.siteName} />
       <main>
         <article className="bg-white py-16">
           <div className="mx-auto max-w-[800px] px-6">
@@ -106,7 +109,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </article>
       </main>
-      <Footer />
+      <Footer settings={settings} services={services} />
     </div>
   );
 }

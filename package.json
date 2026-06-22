@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed:posts": "node scripts/seed-posts.mjs"
+    "seed:posts": "node --env-file=.env.local scripts/seed-posts.mjs",
+    "seed:site": "node --env-file=.env.local scripts/seed-site-content.mjs",
+    "fix:amenity-keys": "node --env-file=.env.local scripts/fix-amenity-keys.mjs",
+    "studio:dev": "npm run dev --prefix studio-hjoffice",
+    "studio:deploy": "npm run deploy --prefix studio-hjoffice",
+    "studio:schema:deploy": "npm run schema:deploy --prefix studio-hjoffice"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
@@ -17,10 +22,10 @@
     "next": "^15.3.3",
     "next-sanity": "^9.12.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sanity": "^3.93.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@sanity/client": "^7.23.0",
     "@types/node": "^20.11.18",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",

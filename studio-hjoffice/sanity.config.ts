@@ -1,17 +1,18 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import { apiVersion, dataset, projectId } from './sanity/env';
-import { schemaTypes } from './sanity/schemaTypes';
+import { schemaTypes } from './schemaTypes';
+import { structure } from './structure';
+
+const projectId = '32ehe8go';
+const dataset = 'production';
 
 export default defineConfig({
   name: 'hj-offices',
   title: 'HJ Offices Consortium',
-  projectId: projectId || 'placeholder',
+  projectId,
   dataset,
-  basePath: '/studio',
-  plugins: [structureTool()],
+  plugins: [structureTool({ structure })],
   schema: {
     types: schemaTypes,
   },
-  apiVersion,
 });

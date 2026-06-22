@@ -4,7 +4,8 @@ import { ArticleCard } from '@/components/blog/ArticleCard';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { getPosts } from '@/sanity/lib/queries';
+import { studioUrl } from '@/lib/studio-url';
+import { getPosts, getSiteSettingsResolved } from '@/sanity/lib/queries';
 
 export const revalidate = 60;
 
@@ -15,11 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+  const [posts, { settings, services }] = await Promise.all([
+    getPosts(),
+    getSiteSettingsResolved(),
+  ]);
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header />
+      <Header logo={settings.logo} siteName={settings.siteName} />
       <main>
         <section className="bg-white py-24">
           <div className="mx-auto max-w-[1280px] px-6">
@@ -46,16 +50,20 @@ export default async function BlogPage() {
               <p className="text-center text-[16px] text-body">
                 Aucun article publié pour le moment. Les administrateurs peuvent
                 publier du contenu via{' '}
-                <Link href="/studio" className="text-gold underline">
+                <a
+                  href={studioUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold underline">
                   Sanity Studio
-                </Link>
+                </a>
                 .
               </p>
             )}
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer settings={settings} services={services} />
     </div>
   );
 }

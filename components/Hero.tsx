@@ -5,56 +5,42 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Facebook, Linkedin } from 'lucide-react';
-import { siteImageAlt, siteImages } from '@/lib/site-images';
+import type { ResolvedHomePageContent } from '@/lib/default-site-content';
 
-const slides = [
-  {
-    eyebrow: 'Bienvenue chez HJ Offices',
-    title: 'Un consortium au service de votre réussite',
-    description:
-      'Les défis juridiques, fiscaux, financiers et entrepreneuriaux exigent une approche globale et coordonnée. HJ Offices Consortium réunit des experts reconnus pour un accompagnement complet, cohérent et efficace.',
-    image: siteImages.heroOffice,
-    imageAlt: siteImageAlt.heroOffice,
-  },
-  {
-    eyebrow: 'Écosystème professionnel',
-    title: 'Un écosystème de compétences',
-    description:
-      'Avocats, notaires, experts-comptables, consultants et formateurs collaborent étroitement pour apporter des solutions adaptées aux entreprises, investisseurs, institutions et particuliers.',
-    image: siteImages.conferenceRoom,
-    imageAlt: siteImageAlt.conferenceRoom,
-  },
-  {
-    eyebrow: 'Cadre moderne',
-    title: 'Un cadre professionnel moderne',
-    description:
-      'Sept bureaux équipés, une salle de conférence de 25 places, une salle de réunion connectée, un parking privé sécurisé et un emplacement stratégique facilement accessible.',
-    image: siteImages.heroModernFrame,
-    imageAlt: siteImageAlt.heroModernFrame,
-  },
-];
+type HeroProps = {
+  slides: ResolvedHomePageContent['heroSlides'];
+  heroTagline: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
+};
 
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-];
+const AUTOPLAY_MS = 7000;
 
-const AUTOPLAY_MS = 3000;
-
-export function Hero() {
+export function Hero({
+  slides,
+  heroTagline,
+  facebookUrl = '#',
+  linkedinUrl = '#',
+}: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   useEffect(() => {
-    if (isPaused) return;
-
+    if (isPaused || slides.length === 0) return;
     const timer = window.setInterval(nextSlide, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, slides.length]);
+
+  if (slides.length === 0) return null;
+
+  const socialLinks = [
+    { icon: Facebook, href: facebookUrl, label: 'Facebook' },
+    { icon: Linkedin, href: linkedinUrl, label: 'LinkedIn' },
+  ];
 
   return (
     <section
@@ -63,11 +49,10 @@ export function Hero() {
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}>
-      {/* Background carousel */}
       <div className="absolute inset-0">
         {slides.map((slide, idx) => (
           <motion.div
-            key={slide.image}
+            key={slide._id ?? `${slide.title}-${idx}`}
             className="absolute inset-0"
             initial={false}
             animate={{
@@ -76,8 +61,8 @@ export function Hero() {
             }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}>
             <Image
-              src={slide.image}
-              alt={slide.imageAlt}
+              src={slide.image.src}
+              alt={slide.image.alt}
               fill
               className="object-cover"
               sizes="100vw"
@@ -89,7 +74,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* Main content */}
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-72px)] max-w-[1404px] items-center px-4 py-20 sm:px-6 lg:min-h-[calc(100svh-81px)] lg:px-8">
         <div className="max-w-3xl">
           <AnimatePresence mode="wait">
@@ -102,11 +86,9 @@ export function Hero() {
               <span className="mb-6 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-[13px] font-medium text-white backdrop-blur-sm">
                 {slides[currentSlide].eyebrow}
               </span>
-
               <h1 className="mb-6 text-[36px] font-bold uppercase leading-[1.08] tracking-tight text-white sm:text-[48px] lg:text-[60px] xl:text-[70px]">
                 {slides[currentSlide].title}
               </h1>
-
               <p className="mb-10 max-w-2xl text-[15px] leading-relaxed text-white/85 sm:text-[17px]">
                 {slides[currentSlide].description}
               </p>
@@ -126,7 +108,7 @@ export function Hero() {
             <div className="flex -space-x-3">
               {slides.map((slide, i) => (
                 <button
-                  key={slide.image}
+                  key={slide._id ?? `${slide.title}-${i}`}
                   type="button"
                   onClick={() => setCurrentSlide(i)}
                   className={`relative h-12 w-12 overflow-hidden rounded-full border-2 transition-all sm:h-14 sm:w-14 ${
@@ -137,8 +119,8 @@ export function Hero() {
                   aria-label={`Afficher la diapositive ${i + 1}`}
                   aria-current={i === currentSlide ? 'true' : undefined}>
                   <Image
-                    src={slide.image}
-                    alt={slide.imageAlt}
+                    src={slide.image.src}
+                    alt={slide.image.alt}
                     fill
                     className="object-cover"
                     sizes="56px"
@@ -147,13 +129,12 @@ export function Hero() {
               ))}
             </div>
             <p className="max-w-[200px] text-[15px] font-semibold leading-snug text-white sm:text-[17px]">
-              Une vision à 360° de vos projets
+              {heroTagline}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Carousel indicators */}
       <div className="absolute bottom-8 right-4 z-10 flex items-center gap-2 sm:right-8">
         {slides.map((_, idx) => (
           <button
@@ -169,7 +150,6 @@ export function Hero() {
         ))}
       </div>
 
-      {/* Vertical social bar */}
       <div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex xl:right-8">
         <span
           className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50"
@@ -181,6 +161,8 @@ export function Hero() {
             <a
               key={label}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={label}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold">
               <Icon className="h-4 w-4" />
