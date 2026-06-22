@@ -21,11 +21,16 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header logo={siteSettings.logo} siteName={siteSettings.siteName} />
+      <Header
+        logo={siteSettings.logo}
+        siteName={siteSettings.siteName}
+        contactEmail={siteSettings.email}
+      />
       <main>
         <Hero
           slides={content.heroSlides}
           heroTagline={siteSettings.heroTagline}
+          contactEmail={siteSettings.email}
           facebookUrl={siteSettings.facebookUrl}
           linkedinUrl={siteSettings.linkedinUrl}
         />

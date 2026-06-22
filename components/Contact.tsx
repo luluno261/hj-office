@@ -1,8 +1,9 @@
 import { Eyebrow } from './ui/Eyebrow';
-import { Button } from './ui/Button';
 import { Phone, Clock, Mail } from 'lucide-react';
 import { SectionBackground } from './ui/SectionBackground';
+import { ContactForm } from './ContactForm';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
+import { buildMailtoUrl } from '@/lib/email-links';
 
 type ContactProps = {
   contact: ResolvedHomePageContent['contactPage'];
@@ -10,6 +11,8 @@ type ContactProps = {
 };
 
 export function Contact({ contact, settings }: ContactProps) {
+  const emailHref = buildMailtoUrl(settings.email);
+
   return (
     <section id="contact" className="bg-cream py-24">
       <div className="mx-auto max-w-[1280px] px-6">
@@ -59,42 +62,25 @@ export function Contact({ contact, settings }: ContactProps) {
                   </div>
                   <div>
                     <h3 className="text-[18px] font-semibold text-teal-900">Adresse email</h3>
-                    <p className="text-[16px] text-body">{settings.email}</p>
+                    <p className="text-[16px] text-body">
+                      <a href={emailHref} className="hover:text-gold">
+                        {settings.email}
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <form className="mt-8 space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  placeholder={contact.formNamePlaceholder}
-                  className="w-full rounded border border-[#A8A8A8] bg-transparent px-4 py-3 text-teal-900 placeholder:text-teal-900/60 focus:border-gold focus:outline-none"
-                />
-                <input
-                  type="email"
-                  placeholder={contact.formEmailPlaceholder}
-                  className="w-full rounded border border-[#A8A8A8] bg-transparent px-4 py-3 text-teal-900 placeholder:text-teal-900/60 focus:border-gold focus:outline-none"
-                />
-                <input
-                  type="tel"
-                  placeholder={contact.formPhonePlaceholder}
-                  className="w-full rounded border border-[#A8A8A8] bg-transparent px-4 py-3 text-teal-900 placeholder:text-teal-900/60 focus:border-gold focus:outline-none"
-                />
-                <input
-                  type="text"
-                  placeholder={contact.formSubjectPlaceholder}
-                  className="w-full rounded border border-[#A8A8A8] bg-transparent px-4 py-3 text-teal-900 placeholder:text-teal-900/60 focus:border-gold focus:outline-none"
-                />
-              </div>
-              <textarea
-                placeholder={contact.formMessagePlaceholder}
-                rows={4}
-                className="w-full rounded border border-[#A8A8A8] bg-transparent px-4 py-3 text-teal-900 placeholder:text-teal-900/60 focus:border-gold focus:outline-none"
-              />
-              <Button type="button">{contact.formSubmitLabel}</Button>
-            </form>
+            <ContactForm
+              toEmail={settings.email}
+              namePlaceholder={contact.formNamePlaceholder}
+              emailPlaceholder={contact.formEmailPlaceholder}
+              phonePlaceholder={contact.formPhonePlaceholder}
+              subjectPlaceholder={contact.formSubjectPlaceholder}
+              messagePlaceholder={contact.formMessagePlaceholder}
+              submitLabel={contact.formSubmitLabel}
+            />
           </div>
         </div>
 

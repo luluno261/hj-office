@@ -23,7 +23,11 @@ export default async function BlogPage() {
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header logo={settings.logo} siteName={settings.siteName} />
+      <Header
+        logo={settings.logo}
+        siteName={settings.siteName}
+        contactEmail={settings.email}
+      />
       <main>
         <section className="bg-white py-24">
           <div className="mx-auto max-w-[1280px] px-6">

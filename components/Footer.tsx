@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Linkedin } from 'lucide-react';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
+import { buildMailtoUrl, buildRendezVousMailtoUrl } from '@/lib/email-links';
 
 const siteLinks = [
   { label: 'Accueil', href: '/' },
@@ -15,8 +16,7 @@ const resourceLinks = [
   { label: 'Blog & actualités', href: '/blog' },
   { label: 'Formations', href: '/#formations' },
   { label: 'Contact', href: '/#contact' },
-  { label: 'Prendre rendez-vous', href: '/#contact' },
-];
+] as const;
 
 type FooterProps = {
   settings: ResolvedHomePageContent['siteSettings'];
@@ -28,6 +28,8 @@ export function Footer({ settings, services }: FooterProps) {
     label: service.title,
     href: service.anchorId ? `/#${service.anchorId}` : '/#services',
   }));
+  const rendezVousHref = buildRendezVousMailtoUrl(settings.email);
+  const emailHref = buildMailtoUrl(settings.email);
 
   return (
     <footer className="bg-cream pt-24">
@@ -45,7 +47,11 @@ export function Footer({ settings, services }: FooterProps) {
               {settings.siteName}
             </h2>
             <div className="space-y-2">
-              <p className="text-[18px] font-semibold text-teal-900">{settings.email}</p>
+              <p className="text-[18px] font-semibold text-teal-900">
+                <a href={emailHref} className="hover:text-gold">
+                  {settings.email}
+                </a>
+              </p>
               <p className="text-[18px] font-semibold text-teal-900">{settings.phone}</p>
             </div>
           </div>
@@ -82,12 +88,17 @@ export function Footer({ settings, services }: FooterProps) {
             <h3 className="text-[18px] font-semibold text-gold">Ressources</h3>
             <ul className="space-y-3 text-[16px] text-dark">
               {resourceLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.href}>
                   <Link href={link.href} className="hover:text-gold">
                     {link.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <a href={rendezVousHref} className="hover:text-gold">
+                  Prendre rendez-vous
+                </a>
+              </li>
             </ul>
           </div>
         </div>

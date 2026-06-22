@@ -8,7 +8,11 @@ export default async function BlogPostNotFound() {
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header logo={settings.logo} siteName={settings.siteName} />
+      <Header
+        logo={settings.logo}
+        siteName={settings.siteName}
+        contactEmail={settings.email}
+      />
       <main className="flex min-h-[50vh] items-center justify-center bg-white py-24">
         <div className="text-center">
           <h1 className="mb-4 text-[40px] font-semibold text-dark">

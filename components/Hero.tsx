@@ -6,10 +6,12 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Facebook, Linkedin } from 'lucide-react';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
+import { buildRendezVousMailtoUrl } from '@/lib/email-links';
 
 type HeroProps = {
   slides: ResolvedHomePageContent['heroSlides'];
   heroTagline: string;
+  contactEmail: string;
   facebookUrl?: string;
   linkedinUrl?: string;
 };
@@ -19,6 +21,7 @@ const AUTOPLAY_MS = 7000;
 export function Hero({
   slides,
   heroTagline,
+  contactEmail,
   facebookUrl = '#',
   linkedinUrl = '#',
 }: HeroProps) {
@@ -95,14 +98,14 @@ export function Hero({
             </motion.div>
           </AnimatePresence>
 
-          <Link
-            href="/#contact"
+          <a
+            href={buildRendezVousMailtoUrl(contactEmail)}
             className="group inline-flex items-center overflow-hidden rounded-full bg-darker/90 pl-7 pr-2 py-2 text-[13px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-darker sm:text-[14px]">
             <span className="py-2">Prendre rendez-vous</span>
             <span className="ml-5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold transition-transform group-hover:scale-105 sm:h-12 sm:w-12">
               <ArrowRight className="h-5 w-5" />
             </span>
-          </Link>
+          </a>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
             <div className="flex -space-x-3">

@@ -64,7 +64,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="min-h-screen font-sans text-body selection:bg-gold selection:text-white">
-      <Header logo={settings.logo} siteName={settings.siteName} />
+      <Header
+        logo={settings.logo}
+        siteName={settings.siteName}
+        contactEmail={settings.email}
+      />
       <main>
         <article className="bg-white py-16">
           <div className="mx-auto max-w-[800px] px-6">

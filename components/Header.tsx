@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import type { ResolvedImage } from '@/lib/resolve-image';
+import { buildRendezVousMailtoUrl } from '@/lib/email-links';
 import { Button } from './ui/Button';
 
 const navLinks = [
@@ -47,9 +48,11 @@ function NavLink({
 export function Header({
   logo,
   siteName = 'HJ Offices',
+  contactEmail,
 }: {
   logo: ResolvedImage;
   siteName?: string;
+  contactEmail: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -74,6 +77,7 @@ export function Header({
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const rendezVousHref = buildRendezVousMailtoUrl(contactEmail);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-teal-900/5 bg-white/95 shadow-sm backdrop-blur-md">
@@ -109,11 +113,11 @@ export function Header({
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <Link href="/#contact" className="hidden lg:block">
+          <a href={rendezVousHref} className="hidden lg:block">
             <Button className="px-4 py-2.5 text-[11px] xl:px-5 xl:text-[12px]">
               Rendez-vous
             </Button>
-          </Link>
+          </a>
 
           <button
             type="button"
@@ -195,11 +199,14 @@ export function Header({
               </ul>
 
               <div className="border-t border-teal-900/10 p-6">
-                <Link href="/#contact" onClick={closeMenu} className="block w-full">
+                <a
+                  href={rendezVousHref}
+                  onClick={closeMenu}
+                  className="block w-full">
                   <Button className="w-full justify-center">
                     Prendre rendez-vous
                   </Button>
-                </Link>
+                </a>
               </div>
             </motion.nav>
           </>
