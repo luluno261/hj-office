@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getIcon } from '@/lib/icon-map';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
+import type { ServiceData } from '@/sanity/types';
+import { ServiceDetailModal } from './ServiceDetailModal';
 
 type ServicesProps = {
   services: ResolvedHomePageContent['services'];
@@ -28,6 +30,7 @@ const slideVariants = {
 export function Services({ services, badge, title, subtitle }: ServicesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [modalService, setModalService] = useState<ServiceData | null>(null);
 
   const handleNext = () => {
     setDirection(1);
@@ -108,10 +111,16 @@ export function Services({ services, badge, title, subtitle }: ServicesProps) {
                       {displayDescription(activeService)}
                     </p>
                   </div>
-                  <div className="relative z-10 flex items-center gap-2 text-gold">
+                  <button
+                    type="button"
+                    onClick={() => setModalService(activeService)}
+                    className="group relative z-10 flex items-center gap-2 text-gold">
                     <span className="font-sans text-base font-medium">En savoir plus</span>
-                    <ArrowRight size={18} />
-                  </div>
+                    <ArrowRight
+                      className="transition-transform group-hover:translate-x-1"
+                      size={18}
+                    />
+                  </button>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -199,19 +208,29 @@ export function Services({ services, badge, title, subtitle }: ServicesProps) {
                       {displayDescription(service)}
                     </p>
                   </div>
-                  <div className="group flex items-center gap-3 text-gold">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setModalService(service);
+                    }}
+                    className="group relative z-10 flex items-center gap-3 text-gold">
                     <span className="font-sans text-lg font-medium">En savoir plus</span>
                     <ArrowRight
                       className="transition-transform group-hover:translate-x-2"
                       size={20}
                     />
-                  </div>
+                  </button>
                 </div>
               </motion.div>
             );
           })}
         </div>
       </div>
+      <ServiceDetailModal
+        service={modalService}
+        onClose={() => setModalService(null)}
+      />
     </section>
   );
 }

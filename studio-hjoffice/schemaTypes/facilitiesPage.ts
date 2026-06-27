@@ -23,6 +23,12 @@ export const facilitiesPage = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'availabilityBadge',
+      title: 'Badge disponibilité',
+      type: 'string',
+      description: 'Ex. : Encore quelques bureaux libres',
+    }),
+    defineField({
       name: 'galleryMain',
       title: 'Image principale galerie',
       type: 'image',

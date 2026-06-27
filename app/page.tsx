@@ -6,7 +6,6 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Resources } from '@/components/Resources';
 import { Services } from '@/components/Services';
-import { Team } from '@/components/Team';
 import { getHomePageContent, getLatestPosts } from '@/sanity/lib/queries';
 
 export const revalidate = 10;
@@ -42,12 +41,6 @@ export default async function HomePage() {
         />
         <About about={content.aboutPage} />
         <Facilities facilities={content.facilitiesPage} />
-        <Team
-          members={content.teamMembers}
-          eyebrow={siteSettings.teamEyebrow}
-          title={siteSettings.teamTitle}
-          intro={siteSettings.teamIntro}
-        />
         <Contact contact={content.contactPage} settings={siteSettings} />
         <Resources posts={latestPosts} />
       </main>

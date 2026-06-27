@@ -81,11 +81,7 @@ export interface TeamMemberData {
 export interface AboutPageData {
   eyebrow: string;
   headline: string;
-  polesCount: number;
-  polesTitle: string;
-  polesDescription: string;
   imageLeft: SanityImage;
-  imageRight: SanityImage;
   missionTitle: string;
   missionText: string;
   visionTitle: string;
@@ -103,6 +99,7 @@ export interface FacilitiesPageData {
   eyebrow: string;
   title: string;
   intro: string;
+  availabilityBadge?: string;
   galleryMain: SanityImage;
   gallerySecondary1: SanityImage;
   gallerySecondary2: SanityImage;

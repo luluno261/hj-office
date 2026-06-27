@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getIcon } from '@/lib/icon-map';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
@@ -43,6 +44,12 @@ export function Facilities({ facilities }: FacilitiesProps) {
             <p className="max-w-2xl font-sans text-lg font-light leading-relaxed text-body">
               {facilities.intro}
             </p>
+            {facilities.availabilityBadge ? (
+              <div className="inline-flex items-center gap-2 self-start rounded-full border border-gold bg-gold/10 px-5 py-2 text-sm font-semibold text-gold">
+                <ArrowRight className="h-3.5 w-3.5 shrink-0" />
+                {facilities.availabilityBadge}
+              </div>
+            ) : null}
           </motion.div>
 
           <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">

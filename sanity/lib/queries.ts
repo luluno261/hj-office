@@ -72,7 +72,7 @@ const siteSettingsQuery = `*[_type == "siteSettings" && _id == "siteSettings"][0
   copyright
 }`;
 
-const heroSlidesQuery = `*[_type == "heroSlide"] | order(order asc) {
+const heroSlidesQuery = `*[_type == "heroSlide" && _id match "heroSlide-*"] | order(order asc) {
   _id,
   eyebrow,
   title,
@@ -80,7 +80,7 @@ const heroSlidesQuery = `*[_type == "heroSlide"] | order(order asc) {
   image
 }`;
 
-const servicesQuery = `*[_type == "service"] | order(order asc) {
+const servicesQuery = `*[_type == "service" && _id match "service-*"] | order(order asc) {
   _id,
   num,
   title,
@@ -91,7 +91,7 @@ const servicesQuery = `*[_type == "service"] | order(order asc) {
   order
 }`;
 
-const teamQuery = `*[_type == "teamMember"] | order(order asc) {
+const teamQuery = `*[_type == "teamMember" && _id match "teamMember-*"] | order(order asc) {
   _id,
   name,
   role,
@@ -104,11 +104,7 @@ const teamQuery = `*[_type == "teamMember"] | order(order asc) {
 const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0]{
   eyebrow,
   headline,
-  polesCount,
-  polesTitle,
-  polesDescription,
   imageLeft,
-  imageRight,
   missionTitle,
   missionText,
   visionTitle,
@@ -120,6 +116,7 @@ const facilitiesPageQuery = `*[_type == "facilitiesPage" && _id == "facilitiesPa
   eyebrow,
   title,
   intro,
+  availabilityBadge,
   galleryMain,
   gallerySecondary1,
   gallerySecondary2,

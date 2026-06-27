@@ -9,7 +9,6 @@ const siteLinks = [
   { label: 'À propos', href: '/#about' },
   { label: 'Nos services', href: '/#services' },
   { label: 'Notre espace', href: '/#facilities' },
-  { label: 'Notre équipe', href: '/#team' },
 ];
 
 const resourceLinks = [
@@ -24,10 +23,6 @@ type FooterProps = {
 };
 
 export function Footer({ settings, services }: FooterProps) {
-  const expertiseLinks = services.map((service) => ({
-    label: service.title,
-    href: service.anchorId ? `/#${service.anchorId}` : '/#services',
-  }));
   const rendezVousHref = buildRendezVousMailtoUrl(settings.email);
   const emailHref = buildMailtoUrl(settings.email);
 
@@ -74,10 +69,12 @@ export function Footer({ settings, services }: FooterProps) {
               Nos pôles d&apos;expertise
             </h3>
             <ul className="space-y-3 text-[16px] text-dark">
-              {expertiseLinks.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="hover:text-gold">
-                    {link.label}
+              {services.map((service) => (
+                <li key={service._id ?? service.num}>
+                  <Link
+                    href={service.anchorId ? `/#${service.anchorId}` : '/#services'}
+                    className="hover:text-gold">
+                    {service.title}
                   </Link>
                 </li>
               ))}

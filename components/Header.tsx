@@ -14,7 +14,6 @@ const navLinks = [
   { href: '/', label: 'Accueil', shortLabel: 'Accueil' },
   { href: '/#services', label: 'Nos 6 Pôles d\'expertise', shortLabel: 'Pôles d\'expertise' },
   { href: '/#about', label: 'À propos', shortLabel: 'À propos' },
-  { href: '/#team', label: 'Notre équipe', shortLabel: 'Équipe' },
   { href: '/blog', label: 'Blog', shortLabel: 'Blog' },
   { href: '/#contact', label: 'Contact', shortLabel: 'Contact' },
 ] as const;

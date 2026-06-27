@@ -27,8 +27,7 @@ const fallbackImages = {
     img(siteImages.conferenceRoom, siteImageAlt.conferenceRoom),
     img(siteImages.heroModernFrame, siteImageAlt.heroModernFrame),
   ],
-  aboutLeft: img(siteImages.entranceSign, siteImageAlt.entranceSign),
-  aboutRight: img(siteImages.officeInterior, siteImageAlt.officeInterior),
+  aboutLeft: img(siteImages.heroModernFrame, siteImageAlt.heroModernFrame),
   facilities: [
     img(siteImages.heroModernFrame, siteImageAlt.heroModernFrame),
     img(siteImages.conferenceRoom, siteImageAlt.conferenceRoom),
@@ -41,9 +40,9 @@ export const defaultSiteSettings: SiteSettings = {
   siteName: 'HJ Offices Consortium',
   logo: { asset: undefined, alt: siteImageAlt.logo },
   email: 'contact@hjoffices.com',
-  phone: '+261388759740',
+  phone: '033 14 315 16',
   hours: 'Lun-Ven : 8h – 18h',
-  facebookUrl: '#',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=61568211755064',
   linkedinUrl: '#',
   mapLink: MAP_LINK,
   mapEmbedUrl: MAP_EMBED_URL,
@@ -72,7 +71,7 @@ export const defaultHeroSlides: HeroSlideData[] = [
     eyebrow: 'Écosystème professionnel',
     title: 'Un écosystème de compétences',
     description:
-      'Avocats, notaires, experts-comptables, consultants et formateurs collaborent étroitement pour apporter des solutions adaptées aux entreprises, investisseurs, institutions et particuliers.',
+      "Avocats, notaires, experts comptables, consultants, et formateurs unis au sein d'un même espace professionnel et collaborent pour apporter des solutions adaptées aux besoins des investisseurs et des entreprises",
     image: { asset: undefined, alt: siteImageAlt.conferenceRoom },
   },
   {
@@ -89,40 +88,87 @@ export const defaultServices: ServiceData[] = [
     num: '01',
     title: "Cabinet d'Avocats",
     icon: 'scale',
-    description:
-      'Conseil et défense devant les juridictions en droit fiscal, social, commercial, des affaires, public, international et pénal des affaires. Audit juridique, conformité, négociations et contentieux.',
+    description: `Notre cabinet accompagne ses clients tant dans le conseil que dans la défense de leurs intérêts devant les juridictions et instances d'arbitrage.
+
+Nous intervenons notamment en droit fiscal, droit social, droit commercial, droit des affaires, droit public, droit international et droit pénal des affaires.
+
+Nos prestations comprennent l'audit juridique, la sécurisation des actes et contrats, la conformité réglementaire, la gestion des risques juridiques, les négociations stratégiques, le précontentieux ainsi que la représentation et l'assistance dans les procédures judiciaires et arbitrales.`,
+    shortDescription:
+      'Conseil et défense devant les juridictions en droit fiscal, social, commercial, des affaires, public, international et pénal des affaires.',
     order: 0,
   },
   {
     num: '02',
     title: 'Service Notarial',
     icon: 'landmark',
-    description:
-      "Rédaction et authentification d'actes juridiques : opérations immobilières, successions, donations, testaments, contrats de mariage, transmission d'entreprise et protection du patrimoine familial.",
+    description: `Le pôle notarial assure la rédaction et l'authentification des actes juridiques tout en garantissant leur sécurité et leur force probante.
+
+Nous accompagnons nos clients dans les opérations immobilières, les successions, les donations, les testaments, les contrats de mariage, la transmission d'entreprise ainsi que l'organisation et la protection du patrimoine familial.`,
+    shortDescription:
+      "Rédaction et authentification d'actes juridiques : opérations immobilières, successions, donations et transmission d'entreprise.",
     order: 1,
   },
   {
     num: '03',
     title: 'Expertise Comptable',
     icon: 'barChart3',
-    description:
-      'Tenue comptable, états financiers, déclarations fiscales et sociales, audit, due diligence, optimisation fiscale et conseil financier. Reporting et tableaux de bord pour piloter votre activité.',
+    description: `Tenue de comptabilité, audit, conseil fiscal, optimisation financière et accompagnement des entreprises dans leur gestion.
+
+1. Comptabilité & Reporting
+* Tenue comptable
+* Révision
+* États financiers
+* Clôture comptable
+2. Fiscalité & Conformité
+* Déclarations fiscales
+* Contrôles fiscaux
+* Conseil fiscal
+3. Social & RH
+* Paie
+* Préparation déclarations sociales et fiscales
+4. Audit & Due Diligence
+* Révision
+* Audit contractuel
+* Due diligence d'acquisition
+* Commissariat aux comptes
+5. Conseil Financier & CFO Externalisé
+* Tableaux de bord
+* Budget
+* Business plan
+* Recherche de financement`,
+    shortDescription:
+      'Tenue de comptabilité, audit, conseil fiscal, optimisation financière et accompagnement des entreprises dans leur gestion.',
     order: 2,
   },
   {
     num: '04',
     title: 'Pôle Entreprise',
     icon: 'briefcase',
-    description:
-      "Guichet unique pour entrepreneurs et investisseurs : création d'entreprise, formalités administratives, domiciliation, modifications statutaires et accompagnement des projets d'investissement.",
+    description: `Pack création d'entreprise
+
+* Déclaration fiscale 6 mois offert
+* Domiciliation 1 an
+* Création SARL, société individuelle, EI, Association, ONG
+* Fiscalité : IRSA, TVA, IR, IS, RCBE, ...
+* Accompagnement de sociétés
+* Accompagnement bancaire
+* Ressources humaines
+* Créations et Déclarations sociales`,
+    shortDescription:
+      'Guichet unique pour entrepreneurs et sociétés : création, domiciliation, fiscalité et accompagnement de vos projets.',
     order: 3,
   },
   {
     num: '05',
     title: 'Pôle Formations',
     icon: 'graduationCap',
-    description:
-      'Programmes pour professionnels et entreprises : fiscalité, droit douanier, comptabilité, management, gouvernance, conformité et anglais professionnel, dispensés par des praticiens expérimentés.',
+    description: `Parce que la performance repose sur la compétence, notre pôle formations propose des programmes destinés aux professionnels, aux entreprises et aux institutions.
+
+Les formations sont dispensées par des praticiens expérimentés dans des domaines variés tels que la fiscalité, le droit douanier, la comptabilité, le management, la gouvernance, la conformité et l'anglais professionnel.
+
+Chaque programme est conçu pour répondre aux exigences du monde professionnel et favoriser le développement durable des compétences.`,
+    shortDescription:
+      'Programmes pour professionnels et entreprises : fiscalité, management, gouvernance et conformité.',
     anchorId: 'formations',
     order: 4,
   },
@@ -130,8 +176,9 @@ export const defaultServices: ServiceData[] = [
     num: '06',
     title: 'Cabinet de Consultance',
     icon: 'globe2',
-    description:
-      "Services de consultance spécialisés couvrant la gouvernance, la lutte contre la corruption, les réformes institutionnelles, la gestion de projets, l'évaluation de politiques publiques et le développement durable. Notre approche analytique et participative aide les organisations internationales à atteindre des résultats mesurables et durables. Nous collaborons avec des partenaires nationaux et internationaux pour offrir des solutions innovantes adaptées aux contextes locaux complexes.",
+    description: `Services de consultance dans le domaine de la gouvernance et communication institutionnelle.
+
+Services de consultance spécialisés couvrant la gouvernance, la lutte contre la corruption, les réformes institutionnelles, la gestion de projets, l'évaluation de politiques publiques et le développement durable. Notre approche analytique et participative aide les organisations internationales à atteindre des résultats mesurables et durables. Nous collaborons avec des partenaires nationaux et internationaux pour offrir des solutions innovantes adaptées aux contextes locaux complexes.`,
     shortDescription:
       "Services de consultance spécialisés couvrant la gouvernance, la lutte contre la corruption, les réformes institutionnelles, la gestion de projets, l'évaluation de politiques publiques et le développement durable.",
     order: 5,
@@ -139,21 +186,16 @@ export const defaultServices: ServiceData[] = [
 ];
 
 export const defaultAboutPage: AboutPageData = {
-  eyebrow: 'À propos de HJ Offices Consortium',
+  eyebrow: '',
   headline:
     'Un écosystème de compétences au service de votre réussite, avec une approche globale et coordonnée.',
-  polesCount: 6,
-  polesTitle: "Pôles d'expertise",
-  polesDescription:
-    "Plus qu'un simple centre d'affaires, HJ Offices Consortium réunit avocats, notaires, experts-comptables, consultants et formateurs pour offrir à chaque client une vision à 360° de ses projets.",
-  imageLeft: { asset: undefined, alt: siteImageAlt.entranceSign },
-  imageRight: { asset: undefined, alt: siteImageAlt.officeInterior },
+  imageLeft: { asset: undefined, alt: siteImageAlt.heroModernFrame },
   missionTitle: 'Notre mission',
   missionText:
-    'Offrir à chaque client une vision à 360° de ses projets grâce à la complémentarité de nos expertises juridiques, fiscales, financières et opérationnelles, pour anticiper les risques et optimiser les opportunités.',
+    'Offrir à chaque client une vision à 360° de ses projets grâce à la complémentarité de nos expertises.',
   visionTitle: 'Notre vision',
   visionText:
-    'Une vision commune, plusieurs expertises, un seul objectif : votre réussite. Devenir le partenaire de confiance des entreprises, investisseurs et institutions.',
+    'Une vision commune, plusieurs expertises, un seul objectif : votre réussite.',
   ctaLabel: 'Découvrir nos pôles',
 };
 
@@ -161,7 +203,8 @@ export const defaultFacilitiesPage: FacilitiesPageData = {
   eyebrow: 'Notre espace',
   title: 'Un cadre professionnel moderne',
   intro:
-    'HJ Offices Consortium met à la disposition de ses membres et de ses clients un environnement de travail moderne et fonctionnel.',
+    'HJ Offices Consortium met à la disposition de ses membres un environnement de travail moderne.',
+  availabilityBadge: 'Encore quelques bureaux libres',
   galleryMain: { asset: undefined, alt: siteImageAlt.heroModernFrame },
   gallerySecondary1: { asset: undefined, alt: siteImageAlt.conferenceRoom },
   gallerySecondary2: { asset: undefined, alt: siteImageAlt.officeInterior },
@@ -205,8 +248,8 @@ export const defaultFacilitiesPage: FacilitiesPageData = {
 };
 
 export const defaultContactPage: ContactPageData = {
-  eyebrow: "Besoin d'un conseil ?",
-  title: 'Demandez un premier entretien',
+  eyebrow: 'Contactez-nous',
+  title: 'Contactez-nous',
   intro:
     "Parlez-nous de votre projet — juridique, fiscal, comptable ou entrepreneurial. Nos six pôles d'expertise coordonnent une réponse adaptée à vos besoins.",
   sideImage: { asset: undefined, alt: siteImageAlt.entranceSign },
@@ -265,9 +308,8 @@ export interface ResolvedHomePageContent {
   siteSettings: SiteSettings & { logo: ResolvedImage };
   heroSlides: Array<Omit<HeroSlideData, 'image'> & { image: ResolvedImage }>;
   services: ServiceData[];
-  aboutPage: Omit<AboutPageData, 'imageLeft' | 'imageRight'> & {
+  aboutPage: Omit<AboutPageData, 'imageLeft'> & {
     imageLeft: ResolvedImage;
-    imageRight: ResolvedImage;
   };
   facilitiesPage: Omit<
     FacilitiesPageData,
@@ -301,7 +343,6 @@ export function resolveHomePageContent(raw: HomePageContent): ResolvedHomePageCo
     aboutPage: {
       ...raw.aboutPage,
       imageLeft: resolveImage(raw.aboutPage.imageLeft, fallbackImages.aboutLeft),
-      imageRight: resolveImage(raw.aboutPage.imageRight, fallbackImages.aboutRight),
     },
     facilitiesPage: {
       ...raw.facilitiesPage,

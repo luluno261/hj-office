@@ -29,7 +29,7 @@ export const service = defineType({
       name: 'description',
       title: 'Description complète',
       type: 'text',
-      rows: 5,
+      rows: 12,
       validation: (rule) => rule.required(),
     }),
     defineField({
