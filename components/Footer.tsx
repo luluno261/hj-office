@@ -4,12 +4,6 @@ import { Facebook, Linkedin } from 'lucide-react';
 import type { ResolvedHomePageContent } from '@/lib/default-site-content';
 import { buildMailtoUrl, buildRendezVousMailtoUrl } from '@/lib/email-links';
 
-const siteLinks = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Nos services', href: '/#services' },
-  { label: 'Notre espace', href: '/#facilities' },
-];
-
 const resourceLinks = [
   { label: 'Articles', href: '/blog' },
   { label: 'Formations', href: '/#formations' },
@@ -28,7 +22,7 @@ export function Footer({ settings, services }: FooterProps) {
   return (
     <footer className="bg-cream pt-24">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-6">
             <Image
               src={settings.logo.src}
@@ -48,19 +42,6 @@ export function Footer({ settings, services }: FooterProps) {
               </p>
               <p className="text-[18px] font-semibold text-teal-900">{settings.phone}</p>
             </div>
-          </div>
-
-          <div className="space-y-6">
-            <h3 className="text-[18px] font-semibold text-gold">Le site</h3>
-            <ul className="space-y-3 text-[16px] text-dark">
-              {siteLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:text-gold">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="space-y-6">
