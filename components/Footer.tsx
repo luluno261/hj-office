@@ -5,7 +5,7 @@ import type { ResolvedHomePageContent } from '@/lib/default-site-content';
 import { buildMailtoUrl, buildRendezVousMailtoUrl } from '@/lib/email-links';
 
 const resourceLinks = [
-  { label: 'Articles', href: '/blog' },
+  { label: 'Articles et guides pratiques', href: '/blog' },
   { label: 'Formations', href: '/#formations' },
   { label: 'Contact', href: '/#contact' },
 ] as const;

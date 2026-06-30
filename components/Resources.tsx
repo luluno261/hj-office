@@ -15,7 +15,7 @@ export function Resources({ posts, showViewAll = true }: ResourcesProps) {
         <div className="mb-16 flex flex-col items-center text-center">
           <Eyebrow className="mb-6">Nos ressources</Eyebrow>
           <h2 className="text-[48px] font-semibold leading-tight text-dark">
-            Articles & guides pratiques
+            Articles et guides pratiques
           </h2>
         </div>
 

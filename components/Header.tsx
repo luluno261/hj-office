@@ -13,7 +13,7 @@ import { Button } from './ui/Button';
 const navLinks = [
   { href: '/', label: 'Accueil', shortLabel: 'Accueil' },
   { href: '/#services', label: 'Nos 6 Pôles d\'expertise', shortLabel: 'Pôles d\'expertise' },
-  { href: '/blog', label: 'Articles', shortLabel: 'Articles' },
+  { href: '/blog', label: 'Articles et guides pratiques', shortLabel: 'Articles et guides pratiques' },
   { href: '/#contact', label: 'Contact', shortLabel: 'Contact' },
 ] as const;
 
