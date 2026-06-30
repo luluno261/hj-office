@@ -6,13 +6,12 @@ import { buildMailtoUrl, buildRendezVousMailtoUrl } from '@/lib/email-links';
 
 const siteLinks = [
   { label: 'Accueil', href: '/' },
-  { label: 'À propos', href: '/#about' },
   { label: 'Nos services', href: '/#services' },
   { label: 'Notre espace', href: '/#facilities' },
 ];
 
 const resourceLinks = [
-  { label: 'Blog & actualités', href: '/blog' },
+  { label: 'Articles', href: '/blog' },
   { label: 'Formations', href: '/#formations' },
   { label: 'Contact', href: '/#contact' },
 ] as const;

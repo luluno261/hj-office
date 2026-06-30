@@ -10,7 +10,6 @@ import { buildRendezVousMailtoUrl } from '@/lib/email-links';
 
 type HeroProps = {
   slides: ResolvedHomePageContent['heroSlides'];
-  heroTagline: string;
   contactEmail: string;
   facebookUrl?: string;
   linkedinUrl?: string;
@@ -20,7 +19,6 @@ const AUTOPLAY_MS = 7000;
 
 export function Hero({
   slides,
-  heroTagline,
   contactEmail,
   facebookUrl = '#',
   linkedinUrl = '#',
@@ -106,35 +104,6 @@ export function Hero({
               <ArrowRight className="h-5 w-5" />
             </span>
           </a>
-
-          <div className="mt-10 flex flex-wrap items-center gap-5">
-            <div className="flex -space-x-3">
-              {slides.map((slide, i) => (
-                <button
-                  key={slide._id ?? `${slide.title}-${i}`}
-                  type="button"
-                  onClick={() => setCurrentSlide(i)}
-                  className={`relative h-12 w-12 overflow-hidden rounded-full border-2 transition-all sm:h-14 sm:w-14 ${
-                    i === currentSlide
-                      ? 'border-gold ring-2 ring-gold/40'
-                      : 'border-white/80 opacity-75 hover:opacity-100'
-                  }`}
-                  aria-label={`Afficher la diapositive ${i + 1}`}
-                  aria-current={i === currentSlide ? 'true' : undefined}>
-                  <Image
-                    src={slide.image.src}
-                    alt={slide.image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="56px"
-                  />
-                </button>
-              ))}
-            </div>
-            <p className="max-w-[200px] text-[15px] font-semibold leading-snug text-white sm:text-[17px]">
-              {heroTagline}
-            </p>
-          </div>
         </div>
       </div>
 

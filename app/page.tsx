@@ -1,4 +1,3 @@
-import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Facilities } from '@/components/Facilities';
 import { Footer } from '@/components/Footer';
@@ -28,7 +27,6 @@ export default async function HomePage() {
       <main>
         <Hero
           slides={content.heroSlides}
-          heroTagline={siteSettings.heroTagline}
           contactEmail={siteSettings.email}
           facebookUrl={siteSettings.facebookUrl}
           linkedinUrl={siteSettings.linkedinUrl}
@@ -39,7 +37,6 @@ export default async function HomePage() {
           title={siteSettings.servicesTitle}
           subtitle={siteSettings.servicesSubtitle}
         />
-        <About about={content.aboutPage} />
         <Facilities facilities={content.facilitiesPage} />
         <Contact contact={content.contactPage} settings={siteSettings} />
         <Resources posts={latestPosts} />

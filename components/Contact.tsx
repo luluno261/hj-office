@@ -72,6 +72,20 @@ export function Contact({ contact, settings }: ContactProps) {
               </div>
             </div>
 
+            <a
+              href={emailHref}
+              className="group inline-flex items-center overflow-hidden rounded-full bg-teal-900 pl-7 pr-2 py-2 text-[13px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-teal-800 sm:text-[14px]">
+              <span className="py-2">
+                Envoyer un email
+                <span className="mt-0.5 block text-[12px] font-normal normal-case tracking-normal text-white/80">
+                  {settings.email}
+                </span>
+              </span>
+              <span className="ml-5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold transition-transform group-hover:scale-105 sm:h-12 sm:w-12">
+                <Mail className="h-5 w-5" />
+              </span>
+            </a>
+
             <ContactForm
               toEmail={settings.email}
               namePlaceholder={contact.formNamePlaceholder}
